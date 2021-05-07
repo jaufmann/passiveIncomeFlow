@@ -1,0 +1,15 @@
+<p><a href="/">Startseite</a> <mat-icon class="maticon">arrow_forward</mat-icon>  Blog post</p>
+
+
+<div class="main-box">
+    <h2>{{blogPost?.fields?.title}}</h2>
+    <h6>{{blogPost?.fields?.publishDate | date:'fullDate'}}</h6>
+    <div class="image">
+        <img [src]="blogPost?.fields?.heroImage?.fields?.file?.url" style="width: 100%">
+    </div>
+
+    <div class="content">
+        {{blogPost?.fields?.body}}
+    </div>
+
+</div>
