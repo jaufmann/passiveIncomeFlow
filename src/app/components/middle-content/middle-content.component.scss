@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  border-top: 4px solid #1520da;
+  border-radius: 14px;
   padding: 10px;
   height: 315px;
   box-shadow: 0px 0px 13px #b9b7b7, 0px 0px 13px #cac5c5;
@@ -26,10 +26,10 @@
 .second {
   background: white;
   height: 315px;
-  border-top: 4px solid #1520da;
   box-shadow: 0px 0px 13px #b9b7b7, 0px 0px 13px #cac5c5;
   position: relative;
   padding: 10px;
+  border-radius: 14px;
 }
 
 .jahr {
