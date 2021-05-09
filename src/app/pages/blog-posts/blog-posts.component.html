@@ -1,14 +1,30 @@
 <h2 style="color: #712caf;">Blog</h2>
 <div *ngFor="let post of posts" class="post-area">
-    <div class="date">
-        {{post?.fields?.publishDate | date:'fullDate'}}
-    </div>
-    <h2>{{post?.fields?.title}}</h2>
+    <div class="shown">
+        <div class="date">
+            {{post?.fields?.publishDate | date:'fullDate'}}
+        </div>
+        <h2>{{post?.fields?.title}}</h2>
 
-    <div>
-        <img [src]="post?.fields?.heroImage?.fields?.file?.url" class="img" ></div>
-    <div class="description">{{post?.fields?.description}}</div>
-    <div style="display: flex; justify-content: flex-end">
+        <div class="imageContainer">
+            <img [src]="post?.fields?.heroImage?.fields?.file?.url" class="img" >
+        </div>
+        <div class="description">{{post?.fields?.description}}</div>
+    </div>
+
+
+
+    <div class="hidden">
+        <div class="imageContainer">
+            <div class="titleBlock">
+                <h2>{{post?.fields?.title}}</h2>
+            </div>
+            <img [src]="post?.fields?.heroImage?.fields?.file?.url" class="img" >
+        </div>
+        <div class="description">{{post?.fields?.description}}</div>
+    </div>
+
+    <div style="display: flex; justify-content: flex-end; margin: 10px">
         <button mat-raised-button color="primary" (click)="route(post?.sys?.id)" class="btn-more">Weiterlesen ></button>
     </div>
 </div>
