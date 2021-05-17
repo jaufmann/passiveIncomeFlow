@@ -100,9 +100,10 @@
 }
 
 .pic {
-  display: flex;
-  justify-content: center;
-
+  a {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .dividendnEinnahmen {
