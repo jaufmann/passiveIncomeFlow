@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {BreadcrumbService} from "../../services/breadcrumb.service";
 
 @Component({
   selector: 'app-depot',
@@ -8,8 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class DepotComponent implements OnInit {
 
   public depot = null;
-  constructor() { }
 
-  async ngOnInit() {}
+  constructor(
+      private activatedRoute: ActivatedRoute,
+      private breadCrumbService: BreadcrumbService
+  ) { }
+
+  async ngOnInit() {
+      this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
+  }
 
 }

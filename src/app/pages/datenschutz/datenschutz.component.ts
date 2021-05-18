@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ContentfulService} from '../../services/contentful/contentful.service';
 import {GenericContentfulDomManipulatorService} from '../../services/contentful/generic-contentful-dom-manipulator.service';
+import {BreadcrumbService} from "../../services/breadcrumb.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-datenschutz',
@@ -10,12 +12,12 @@ import {GenericContentfulDomManipulatorService} from '../../services/contentful/
 export class DatenschutzComponent implements OnInit {
   constructor(
       private contentfulService: ContentfulService,
-      private genericContentfulDomManipulatorService: GenericContentfulDomManipulatorService
+      private genericContentfulDomManipulatorService: GenericContentfulDomManipulatorService,
+      private breadCrumbService: BreadcrumbService,
+      private activatedRoute: ActivatedRoute
   ) { }
 
   async ngOnInit() {
-      const datenschutz = await this.contentfulService.getDatenschutz();
-      const container = document.getElementById('container');
-      container.innerHTML = this.genericContentfulDomManipulatorService.parseContentToHTMLDomElements(datenschutz, 'datenschutz');
+      this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
   }
 }

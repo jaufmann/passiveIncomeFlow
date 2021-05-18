@@ -27,6 +27,7 @@ import { DatenschutzComponent } from './pages/datenschutz/datenschutz.component'
 import { SideSectionComponent } from './components/side-section/side-section.component';
 import { DepotComponent } from './pages/depot/depot.component';
 import { ContentfulRichmediaDirective } from './directives/contentful-richmedia.directive';
+import { BreadcrumpComponent } from './components/breadcrump/breadcrump.component';
 registerLocaleData(localeDe, localeDeExtra);
 
 
@@ -42,7 +43,8 @@ registerLocaleData(localeDe, localeDeExtra);
     DatenschutzComponent,
     SideSectionComponent,
     DepotComponent,
-    ContentfulRichmediaDirective
+    ContentfulRichmediaDirective,
+    BreadcrumpComponent
   ],
   imports: [
       BrowserModule,

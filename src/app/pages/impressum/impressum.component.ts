@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BreadcrumbService} from "../../services/breadcrumb.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-impressum',
@@ -7,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ImpressumComponent implements OnInit {
 
-  constructor() { }
-
-  test = '<h2>google</h2>'
+  constructor(private breadCrumbService: BreadcrumbService,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+      this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
   }
 
 }

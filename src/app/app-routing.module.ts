@@ -12,22 +12,35 @@ const routes: Routes = [
         path: 'footer', component: FooterComponent
     },
     {
-        path: 'impressum', component: ImpressumComponent
+        path: 'impressum', component: ImpressumComponent,
+        data: {
+            title: "Impressum"
+        }
     },
     {
-        path: 'datenschutz', component: DatenschutzComponent
+        path: 'datenschutz', component: DatenschutzComponent,
+        data: {
+            title: "Datenschutz"
+        }
     },
     {
-        path: 'depot', component: DepotComponent
+        path: 'depot', component: DepotComponent,
+        data: {
+            title: "Depot"
+        }
     },
     {
         path: '',
         component: BlogPostsComponent,
-        pathMatch: 'full'
+        pathMatch: 'full',
     },
     {
         path: 'blog-post/:id',
-        component: SingleBlogPostComponent }
+        component: SingleBlogPostComponent,
+        data: {
+            title: "Blog Post"
+        }
+    }
 ];
 
 @NgModule({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ContentfulService} from '../../services/contentful/contentful.service';
+import {BreadcrumbService} from "../../services/breadcrumb.service";
 
 @Component({
   selector: 'app-single-blog-post',
@@ -13,10 +14,13 @@ export class SingleBlogPostComponent implements OnInit {
 
   constructor(
       private route: ActivatedRoute,
-      private contentfulService: ContentfulService
+      private contentfulService: ContentfulService,
+      private activatedRoute: ActivatedRoute,
+      private breadCrumbService: BreadcrumbService
   ) { }
 
   ngOnInit(): void {
+      this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
       this.route.params.subscribe(async params => {
           const id = params.id; // (+) converts string 'id' to a number
 
