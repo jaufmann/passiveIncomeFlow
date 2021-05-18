@@ -9,7 +9,7 @@ import {BreadcrumbService} from "../../services/breadcrumb.service";
 })
 export class BreadcrumpComponent implements OnInit {
 
-  private currentRouteName = null;
+  currentRouteName = null;
   constructor(private breadCrumbService: BreadcrumbService) { }
 
   ngOnInit(): void {
