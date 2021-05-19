@@ -9,7 +9,7 @@ export class GenericContentfulDomManipulatorService {
 
     parseContentToHTMLDomElements(contentFullRichMediaContent, type): string {
       let hmtlChain = '';
-      const contentType = type === 'datenschutz' ? 'datenschutzContent' : 'depot';
+      const contentType = 'richtext';
 
       for (const content of contentFullRichMediaContent.fields[contentType].content) {
           if (content.nodeType === 'paragraph') {
@@ -18,7 +18,12 @@ export class GenericContentfulDomManipulatorService {
               hmtlChain = hmtlChain + this.orderedList(content, content.nodeType);
           } else if (content.nodeType.includes('heading-')) {
               hmtlChain = hmtlChain + this.heading(content, content.nodeType);
+          } else if (content.nodeType.includes('embedded-asset-block')) {
+              hmtlChain = hmtlChain + this.image(content);
+          } else if (content.nodeType.includes('embedded-entry-inline')) {
+              hmtlChain = hmtlChain + this.embededEntry(content);
           }
+
       }
 
       return hmtlChain;
@@ -57,16 +62,24 @@ export class GenericContentfulDomManipulatorService {
 
             if (c.nodeType === 'hyperlink') {
                 hmtlChain += this.hyperLink(c);
+            } else if(c.nodeType === 'embedded-entry-inline') {
+                hmtlChain += this.embededEntry(c)
             } else {
                 let value = c.value;
-                if  (c.marks && c.marks.length !== 0) {
-                    for (const m of c.marks) {
-                        if (m.type === 'bold') {
-                            value = '<b>' + value + '</b>';
+
+                if (value === "") {
+                    hmtlChain += '<br>'
+                } else {
+                    if  (c.marks && c.marks.length !== 0) {
+                        for (const m of c.marks) {
+                            if (m.type === 'bold') {
+                                value = '<b>' + value + '</b>';
+                            }
                         }
                     }
+
+                    hmtlChain += value;
                 }
-                hmtlChain += value;
             }
         }
 
@@ -83,4 +96,24 @@ export class GenericContentfulDomManipulatorService {
 
         return a + '</a>';
     }
+
+    private image(content) {
+        let img = `<img src='${content.data.target.fields.file.url}'>`;
+
+        return img;
+    }
+
+
+    private embededEntry(content) {
+
+      console.log("content", content.data.target.fields.media.fields.file.url)
+        let img = `<div style="display: flex; justify-content: ${content.data.target.fields.align}">
+                    <img src='https://${content.data.target.fields.media.fields.file.url}' 
+                        width='${content.data.target.fields.width}'
+                        height='${content.data.target.fields.height}'>
+                    </div>`;
+
+        return img;
+    }
+
 }

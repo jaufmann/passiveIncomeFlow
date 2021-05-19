@@ -1,11 +1,6 @@
-// ./src/app/contentful.service.ts
 import { Injectable } from '@angular/core';
-// import Contentful createClient and type for `Entry`
-import {createClient, Entry, EntryCollection} from 'contentful';
-import {from, Observable} from "rxjs";
+import {createClient} from 'contentful';
 
-// configure the service with tokens and content type ids
-// SET YOU OWN CONFIG here
 const CONFIG = {
     space: 'fh8o0elpc9nz',
     accessToken: 'tiqnB9Wow4ZdXeQa9SUW_87pLEt_3_qyC7ptxS5w80g',
@@ -19,10 +14,6 @@ export class ContentfulService {
     });
 
     constructor() { }
-
-    logContent(contentId) {
-        this.cdaClient.getEntry(contentId).then(entry => console.log(entry));
-    }
 
     getContent(contentId, skip?: any) {
         const promise = this.cdaClient.getEntries({
@@ -39,12 +30,17 @@ export class ContentfulService {
     }
 
     getDatenschutz() {
-        const promise = this.cdaClient.getEntry('3FDZsGggh4BCXkWzHtWJFh').then(r => r);
+        const promise = this.cdaClient.getEntry('1MYJFahm1BBazeuxyySjG5').then(r => r);
         return promise;
     }
 
     getDepot() {
-        const promise = this.cdaClient.getEntry('3bGb6PYZI8rCMt8NU3SZ7Z').then(r => r);
+        const promise = this.cdaClient.getEntry('6JMZQOvbUMIrLc8oeD1xQ').then(r => r);
+        return promise;
+    }
+
+    getImpressum() {
+        const promise = this.cdaClient.getEntry('6KUe87ahd5Fsve02oeAxhz').then(r => r);
         return promise;
     }
 }

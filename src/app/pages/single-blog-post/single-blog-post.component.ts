@@ -22,11 +22,8 @@ export class SingleBlogPostComponent implements OnInit {
   ngOnInit(): void {
       this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
       this.route.params.subscribe(async params => {
-          const id = params.id; // (+) converts string 'id' to a number
-
+          const id = params.id;
           this.blogPost  = await this.contentfulService.getSingleBlogPost(id);
-
-          console.log("fsdfsdfsfsf", this.blogPost);
       });
   }
 }

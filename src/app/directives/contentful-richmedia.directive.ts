@@ -19,8 +19,10 @@ export class ContentfulRichmediaDirective implements OnInit{
         switch (this.type) {
             case 'depot': content = await this.contentFullService.getDepot(); break;
             case 'datenschutz': content = await this.contentFullService.getDatenschutz(); break;
+            case 'impressum': content = await this.contentFullService.getImpressum(); break;
         }
 
+        console.log(content)
         this.elr.nativeElement.innerHTML = this.genericContentfulDomManipulatorService
             .parseContentToHTMLDomElements(content, this.type);
     }
