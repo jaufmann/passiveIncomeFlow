@@ -105,13 +105,18 @@ export class GenericContentfulDomManipulatorService {
 
 
     private embededEntry(content) {
-
-      console.log("content", content.data.target.fields.media.fields.file.url)
-        let img = `<div style="display: flex; justify-content: ${content.data.target.fields.align}">
+        let img = null;
+        if (content.data.target.fields.type !== null && content.data.target.fields.type === 'image') {
+           img =  `<div style="display: flex;
+                                justify-content: ${content.data.target.fields.align}">
                     <img src='https://${content.data.target.fields.media.fields.file.url}' 
-                        width='${content.data.target.fields.width}'
-                        height='${content.data.target.fields.height}'>
+                    style="height: auto;
+                                width: 100%;
+                                max-width: ${content.data.target.fields.width}px">
                     </div>`;
+
+            console.log(content)
+        }
 
         return img;
     }
