@@ -43,4 +43,14 @@ export class ContentfulService {
         const promise = this.cdaClient.getEntry('6KUe87ahd5Fsve02oeAxhz').then(r => r);
         return promise;
     }
+
+    getBooks() {
+        const promise = this.cdaClient.getEntry('6yHrsNmkchm21txveQ0Cmc').then(r => r);
+        return promise;
+    }
+
+    getTools() {
+        const promise = this.cdaClient.getEntry('64uJCtSrGEMqbv7lkdrY2O').then(r => r);
+        return promise;
+    }
 }

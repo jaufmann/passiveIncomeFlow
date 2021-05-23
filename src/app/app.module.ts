@@ -28,6 +28,8 @@ import { SideSectionComponent } from './components/side-section/side-section.com
 import { DepotComponent } from './pages/depot/depot.component';
 import { ContentfulRichmediaDirective } from './directives/contentful-richmedia.directive';
 import { BreadcrumpComponent } from './components/breadcrump/breadcrump.component';
+import { BooksComponent } from './pages/books/books.component';
+import { ToolsComponent } from './pages/tools/tools.component';
 registerLocaleData(localeDe, localeDeExtra);
 
 
@@ -44,7 +46,9 @@ registerLocaleData(localeDe, localeDeExtra);
     SideSectionComponent,
     DepotComponent,
     ContentfulRichmediaDirective,
-    BreadcrumpComponent
+    BreadcrumpComponent,
+    BooksComponent,
+    ToolsComponent
   ],
   imports: [
       BrowserModule,

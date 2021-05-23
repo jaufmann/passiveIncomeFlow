@@ -20,6 +20,8 @@ export class ContentfulRichmediaDirective implements OnInit{
             case 'depot': content = await this.contentFullService.getDepot(); break;
             case 'datenschutz': content = await this.contentFullService.getDatenschutz(); break;
             case 'impressum': content = await this.contentFullService.getImpressum(); break;
+            case 'books': content = await this.contentFullService.getBooks(); break;
+            case 'tools': content = await this.contentFullService.getTools(); break;
         }
 
         console.log(content)

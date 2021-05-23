@@ -6,6 +6,8 @@ import {SingleBlogPostComponent} from './pages/single-blog-post/single-blog-post
 import {ImpressumComponent} from './pages/impressum/impressum.component';
 import {DatenschutzComponent} from './pages/datenschutz/datenschutz.component';
 import {DepotComponent} from './pages/depot/depot.component';
+import {BooksComponent} from "./pages/books/books.component";
+import {ToolsComponent} from "./pages/tools/tools.component";
 
 const routes: Routes = [
     {
@@ -39,6 +41,20 @@ const routes: Routes = [
         component: SingleBlogPostComponent,
         data: {
             title: "Blog Post"
+        }
+    },
+    {
+        path: 'books',
+        component: BooksComponent,
+        data: {
+            title: "Bücher"
+        }
+    },
+    {
+        path: 'tools',
+        component: ToolsComponent,
+        data: {
+            title: "Tools"
         }
     }
 ];
