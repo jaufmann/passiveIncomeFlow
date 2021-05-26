@@ -53,4 +53,9 @@ export class ContentfulService {
         const promise = this.cdaClient.getEntry('64uJCtSrGEMqbv7lkdrY2O').then(r => r);
         return promise;
     }
+
+    getDividendYear() {
+        const promise = this.cdaClient.getEntry('5vs5ZvZVfHhFVOg5Fb7cYx').then(r => r);
+        return promise;
+    }
 }

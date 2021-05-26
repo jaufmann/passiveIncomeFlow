@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ContentfulService} from "../../services/contentful/contentful.service";
 
 @Component({
   selector: 'app-middle-content',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MiddleContentComponent implements OnInit {
 
-  constructor() { }
+  income: any = null;
+  constructor(
+      private contentFullService: ContentfulService
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+      this.income = (await this.contentFullService.getDividendYear()).fields;
+      console.log('----', this.income)
   }
 
 }
