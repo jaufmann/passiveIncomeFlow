@@ -22,6 +22,8 @@ export class BlogPostsComponent implements OnInit {
     @Input('type') type = null;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
+    public title = null;
+
     constructor(
         private router: Router,
         private contentfulService: ContentfulService,
@@ -33,6 +35,7 @@ export class BlogPostsComponent implements OnInit {
         this.breadCrumbService.setRouter(null);
         this.posts  = await this.contentfulService.getContent('blogPost');
         this.posts = this.filterByTags(this.posts);
+        this.title = this.type === "book" ? "Bücher" : "Blog";
     }
 
     private filterByTags(allPosts) {
@@ -42,7 +45,7 @@ export class BlogPostsComponent implements OnInit {
             });
         }
 
-        return this.posts;
+        return allPosts;
     }
 
     private route(id) {
