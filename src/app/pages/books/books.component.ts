@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {BreadcrumbService} from "../../services/breadcrumb.service";
-import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-books',
@@ -8,14 +6,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./books.component.scss']
 })
 export class BooksComponent implements OnInit {
+  constructor() { }
 
-  constructor(
-      private breadCrumbService: BreadcrumbService,
-      private activatedRoute: ActivatedRoute
-  ) { }
-
-  ngOnInit(): void {
-      this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
-  }
+  ngOnInit() {}
 
 }

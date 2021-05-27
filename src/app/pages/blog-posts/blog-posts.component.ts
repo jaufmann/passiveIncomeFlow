@@ -1,7 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ContentfulService} from '../../services/contentful/contentful.service';
 import {Entry} from 'contentful';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {BreadcrumbService} from "../../services/breadcrumb.service";
 
@@ -19,6 +19,7 @@ export class BlogPostsComponent implements OnInit {
     public disableNext = false;
     public disablePrev = true;
 
+    @Input('type') type = null;
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     constructor(
@@ -31,6 +32,17 @@ export class BlogPostsComponent implements OnInit {
     async ngOnInit() {
         this.breadCrumbService.setRouter(null);
         this.posts  = await this.contentfulService.getContent('blogPost');
+        this.posts = this.filterByTags(this.posts);
+    }
+
+    private filterByTags(allPosts) {
+        if (this.type === "book") {
+            return allPosts.filter(p => {
+                return p.fields.tags.includes("buch");
+            });
+        }
+
+        return this.posts;
     }
 
     private route(id) {
@@ -41,7 +53,8 @@ export class BlogPostsComponent implements OnInit {
         this.currentPageIndex = this.currentPageIndex + 2;
         this.disablePrev = false;
 
-        const retrievedPosts  = await this.contentfulService.getContent('blogPost', this.currentPageIndex);
+        let retrievedPosts  = await this.contentfulService.getContent('blogPost', this.currentPageIndex);
+        retrievedPosts = this.filterByTags(retrievedPosts);
 
         if (retrievedPosts.length === 0) {
             this.disableNext = true;
@@ -55,6 +68,7 @@ export class BlogPostsComponent implements OnInit {
         this.disableNext = false;
         if (this.currentPageIndex >= 0) {
             this.posts  = await this.contentfulService.getContent('blogPost', this.currentPageIndex);
+            this.posts = this.filterByTags(this.posts);
         }
 
         if (this.currentPageIndex === 0) {
