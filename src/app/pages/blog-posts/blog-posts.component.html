@@ -16,16 +16,16 @@
 
     <div class="hidden">
         <div class="imageContainer">
-            <img [src]="post?.fields?.heroImage?.fields?.file?.url" class="img" >
-        </div>
-
-        <div class="description">
-            <h4>{{post?.fields?.title}}</h4>
-            {{post?.fields?.description}}
+            <img [src]="post?.fields?.heroImage?.fields?.file?.url"
+                 class="img"
+                 (click)="route(post?.sys?.id)">
+            <div class="title">
+                <h4>{{post?.fields?.title}}</h4>
+            </div>
         </div>
     </div>
 
-    <div style="display: flex; justify-content: flex-end; margin: 10px">
+    <div class="button">
         <button mat-raised-button color="primary"
                 (click)="route(post?.sys?.id)"
                 class="btn-more" style="position: absolute; bottom: 20px">Weiterlesen ></button>
