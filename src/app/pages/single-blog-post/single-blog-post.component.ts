@@ -11,6 +11,7 @@ import {BreadcrumbService} from "../../services/breadcrumb.service";
 export class SingleBlogPostComponent implements OnInit {
 
     blogPost;
+    id;
 
   constructor(
       private route: ActivatedRoute,
@@ -22,8 +23,10 @@ export class SingleBlogPostComponent implements OnInit {
   ngOnInit(): void {
       this.breadCrumbService.setRouter(this.activatedRoute.snapshot);
       this.route.params.subscribe(async params => {
-          const id = params.id;
-          this.blogPost  = await this.contentfulService.getSingleBlogPost(id);
+          this.id = params.id;
+          /*this.blogPost  = await this.contentfulService.getSingleBlogPost(id);
+
+          console.log(this.blogPost)*/
       });
   }
 }

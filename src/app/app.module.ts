@@ -19,7 +19,7 @@ import { MiddleContentComponent } from './components/middle-content/middle-conte
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTooltipModule} from '@angular/material/tooltip';
-import {registerLocaleData} from '@angular/common';
+import {DatePipe, registerLocaleData} from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import localeDeExtra from '@angular/common/locales/extra/de';
 import { ImpressumComponent } from './pages/impressum/impressum.component';
@@ -30,6 +30,7 @@ import { ContentfulRichmediaDirective } from './directives/contentful-richmedia.
 import { BreadcrumpComponent } from './components/breadcrump/breadcrump.component';
 import { BooksComponent } from './pages/books/books.component';
 import { ToolsComponent } from './pages/tools/tools.component';
+import { BlogPostDirective } from './directives/blogPost/blog-post.directive';
 registerLocaleData(localeDe, localeDeExtra);
 
 
@@ -48,7 +49,8 @@ registerLocaleData(localeDe, localeDeExtra);
     ContentfulRichmediaDirective,
     BreadcrumpComponent,
     BooksComponent,
-    ToolsComponent
+    ToolsComponent,
+    BlogPostDirective
   ],
   imports: [
       BrowserModule,
@@ -66,6 +68,7 @@ registerLocaleData(localeDe, localeDeExtra);
       FlexLayoutModule,
   ],
   providers: [
+      DatePipe,
       ContentfulService,
       { provide: LOCALE_ID, useValue: 'de' },
   ],

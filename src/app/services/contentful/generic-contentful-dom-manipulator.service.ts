@@ -7,11 +7,10 @@ export class GenericContentfulDomManipulatorService {
 
   constructor() { }
 
-    parseContentToHTMLDomElements(contentFullRichMediaContent, type): string {
+    parseContentToHTMLDomElements(contentFullRichMediaContent): string {
       let hmtlChain = '';
-      const contentType = 'richtext';
 
-      for (const content of contentFullRichMediaContent.fields[contentType].content) {
+      for (const content of contentFullRichMediaContent) {
           if (content.nodeType === 'paragraph') {
               hmtlChain = hmtlChain + this.paragraph(content);
           } else if (content.nodeType === 'ordered-list' || content.nodeType === 'unordered-list') {

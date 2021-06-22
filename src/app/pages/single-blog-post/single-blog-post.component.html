@@ -1,4 +1,4 @@
-<div class="main-box">
+<!--<div class="main-box">
     <h2>{{blogPost?.fields?.title}}</h2>
     <h6>{{blogPost?.fields?.publishDate | date:'fullDate'}}</h6>
     <div class="image">
@@ -6,6 +6,7 @@
     </div>
 
     <div class="content">
-        {{blogPost?.fields?.body}}
+        <div class="main-box" appBlogPost [blogPostId]="id"></div>
     </div>
-</div>
+</div>-->
+<div class="main-box" appBlogPost [blogPostId]="id"></div>

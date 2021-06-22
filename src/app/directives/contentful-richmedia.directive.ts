@@ -8,6 +8,8 @@ import {GenericContentfulDomManipulatorService} from '../services/contentful/gen
 export class ContentfulRichmediaDirective implements OnInit{
 
   @Input('type') type;
+  @Input('definedContent') definedContent;
+
   constructor(
       private elr: ElementRef,
       private contentFullService: ContentfulService,
@@ -22,11 +24,10 @@ export class ContentfulRichmediaDirective implements OnInit{
             case 'impressum': content = await this.contentFullService.getImpressum(); break;
             case 'books': content = await this.contentFullService.getBooks(); break;
             case 'tools': content = await this.contentFullService.getTools(); break;
+            case 'blogPost': content = this.definedContent;
         }
 
-        console.log(content)
-        this.elr.nativeElement.innerHTML = this.genericContentfulDomManipulatorService
-            .parseContentToHTMLDomElements(content, this.type);
+        this.elr.nativeElement.innerHTML = this.genericContentfulDomManipulatorService.parseContentToHTMLDomElements(content.fields.richtext.content);
     }
 
 }
