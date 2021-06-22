@@ -20,9 +20,9 @@
                 <mat-sidenav #sidenav fxLayout="column">
                     <div fxLayout="column">
                         <a href="#" mat-button>Blog</a>
-                        <a routerLink="/depot"  mat-button>Depot</a>
-                        <a routerLink="/books" mat-button>Bücher</a>
-                        <a routerLink="/tools" mat-button>Tools</a>
+                        <a (click)="navigateAndCloseNav('depot')"  mat-button>Depot</a>
+                        <a (click)="navigateAndCloseNav('books')"mat-button>Bücher</a>
+                        <a (click)="navigateAndCloseNav('tools')" mat-button>Tools</a>
                     </div>
                 </mat-sidenav>
                 <mat-sidenav-content fxFlexFill class="side-nav-content">
@@ -38,8 +38,7 @@
                                         <app-breadcrump></app-breadcrump>
                                         <router-outlet></router-outlet>
                                     </div>
-                                    <div #sidenavvvvv [ngClass]="{'full-footer': fullFooter, 'small-footer': !fullFooter }">
-
+                                    <div #sideSectionRight [ngClass]="{'full-footer': fullFooter, 'small-footer': !fullFooter }">
                                         <app-side-section></app-side-section>
                                     </div>
                                 </div>
